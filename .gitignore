@@ -8,3 +8,5 @@ negative_image/
 basics_tensor_pytorch/
 gambar_dimata_orang_ilmu_komputer/
 image_augmentation/
+classification_with_sklearn/
+.gitignore
