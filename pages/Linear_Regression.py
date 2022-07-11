@@ -88,18 +88,18 @@ with col_2:
 
 st.markdown(
     body="""<h4>Kode</h4>
-    <p>Implementasi regresi linier menggunakan pustaka <a href='https://scikit-learn.org/stable/index.html' target='_blank'>Scikit-Learn</a>. Modul yang digunakan adalah <a href='https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression' target='_blank'>LinearRegression()</a></p>""",
+    <p>Implementasi regresi linier menggunakan pustaka <a href='https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression' target='_blank'>Scikit-Learn - Linear Regression</a></p>""",
     unsafe_allow_html=True
 )
 
 st.code(
-    body="""## Simple Linear Regression with Scikit-Learn ##
+    body="""## Linear Regression with Scikit-Learn ##
 
 # step 1: import modules
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_regression
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import mean_absolute_error, r2_score
 
 # step 2: create dummy data, X (feature) and y (target)
 X, y = make_regression(n_samples=20,
@@ -115,22 +115,24 @@ model = LinearRegression().fit(X, y)
 y_pred = model.predict(X)
 
 # step 5: evaluate
-r2_score = r2_score(y, y_pred)
+r_square_score = r2_score(y, y_pred)
 mae = mean_absolute_error(y, y_pred)
 
-# step 6: visualize prediction
+# step 6: create plot
 plt.figure(figsize=(5, 5))
-plt.title(f"$R^2$: {r2_score:.3f} | Mean Absolute Error: {mae:.3f}", size=13)
+plt.title(f"$R^2$: {r_square_score:.3f} | Mean Absolute Error: {mae:.3f}", size=13)
 plt.xlabel("X (fitur)")
 plt.ylabel("y (target)")
 plt.grid()
 plt.scatter(X, y, c="green", label="Samples")
 plt.plot(X, y_pred, c="gold", label="Prediksi Model")
 plt.legend()
-plt.show()
 
 # step 7: save plot
-plt.savefig("linear_regression.jpg", dpi=300);
+plt.savefig("linear_regression.jpg", dpi=300)
+
+# step 8: show plot
+plt.show();
 
 ## Made with 💚 by haloapping (https://haloapping.github.io/) ##""",
     language="python"
