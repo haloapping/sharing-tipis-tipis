@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import streamlit as st
-from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import mean_absolute_error, r2_score
 from sklearn.linear_model import LinearRegression
 from sklearn.datasets import make_regression
 
@@ -31,9 +31,9 @@ st.markdown(
 st.latex(
     body=r'''
         \begin{align*}
-            y &= Wx + b,\\\\
+            y &= wx + b,\\\\
             \text{dimana, }y &= \text{target (prediksi),}\\
-            W &= \text{bobot,}\\
+            w &= \text{bobot,}\\
             x &= \text{fitur,}\\
             b &= \text{bias}
         \end{align*}
@@ -68,18 +68,20 @@ with col_2:
                            random_state=int(random_state))
     model = LinearRegression().fit(X, y)
     y_pred = model.predict(X)
+    r2_score = r2_score(y, y_pred)
     mae = mean_absolute_error(y, y_pred)
 
     st.markdown(
-        body="<h4 style='text-align: center'>Visualisasi Simpel Regresi Linier</h4>",
+        body="<h4 style='text-align: center'>Visualisasi Regresi Linier</h4>",
         unsafe_allow_html=True)
     fig, ax = plt.subplots()
-    ax.set_title(f"Mean Absolute Error: {mae:.3f}", size=13)
-    ax.set_xlabel("X (feature)")
+    ax.set_title(
+        f"$R^2$: {r2_score:.3f} | Mean Absolute Error: {mae:.3f}", size=13)
+    ax.set_xlabel("X (fitur)")
     ax.set_ylabel("y (target)")
     ax.grid()
-    ax.scatter(X, y, c="green", label="Samples")
-    ax.plot(X, y_pred, c="gold", label="Prediction LinReg Model")
+    ax.scatter(X, y, c="green", label="Sampel")
+    ax.plot(X, y_pred, c="gold", label="Prediksi LinReg Model")
     ax.legend()
     st.pyplot(fig)
 
@@ -104,26 +106,29 @@ X, y = make_regression(n_samples=20,
                     noise=10,
                     random_state=42)
 
-# step 3: train
+# step 3: training
 model = LinearRegression().fit(X, y)
 
 # step 4: predict
 y_pred = model.predict(X)
 
 # step 5: evaluate
+r2_score = r2_score(y, y_pred)
 mae = mean_absolute_error(y, y_pred)
 
 # step 6: visualize prediction
 plt.figure(figsize=(5, 5))
-plt.title(f"Simple Linear Regression (MAE: {mae:.3f})", size=13)
-plt.xlabel("X (feature)")
+plt.title(f"$R^2$: {r2_score:.3f} | Mean Absolute Error: {mae:.3f}", size=13)
+plt.xlabel("X (fitur)")
 plt.ylabel("y (target)")
 plt.grid()
 plt.scatter(X, y, c="green", label="Samples")
-plt.plot(X, y_pred, c="gold", label="Prediction LinReg Model")
+plt.plot(X, y_pred, c="gold", label="Prediksi LinReg Model")
 plt.legend()
-plt.savefig("simple_linreg.jpg", dpi=300);
 plt.show()
+
+# step 7: save plot
+plt.savefig("linear_regression.jpg", dpi=300);
 
 ## Made with 💚 by haloapping (https://haloapping.github.io/) ##""",
     language="python"
