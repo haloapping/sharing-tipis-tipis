@@ -6,20 +6,21 @@ from sklearn.datasets import make_regression
 
 
 st.set_page_config(
-    page_title="Regresi Linier menggunakan Scikit-Learn",
-    page_icon="😄",
+    page_title="Regresi Linier",
+    page_icon="🚀",
     layout="wide"
 )
 
-st.sidebar.markdown("## Regresi Linier menggunakan Scikit-Learn")
+st.sidebar.markdown("## Regresi Linier")
 st.markdown(
-    body="<h2 style='text-align: center; margin-bottom: 50px'>Regresi Linier menggunakan Scikit-Learn</h2>",
+    body="<h2 style='text-align: center; margin-bottom: 50px'>Regresi Linier</h2>",
     unsafe_allow_html=True
 )
 
 st.markdown(
     body="""<h4>Intuisi dan Konsep</h4>
-    <p style='margin-bottom: 30px;'>Buat sebuah garis lurus yang dapat menghampiri semua sampel atau data. Pola dari data harus cukup linier.</p>""",
+    <p style='margin-bottom: 30px;'>Buat sebuah garis lurus yang dapat menghampiri semua sampel atau data.
+    Jarak antara garis dengan setiap sampel sekecil mungkin. Pola dari data harus cukup linier.</p>""",
     unsafe_allow_html=True
 )
 
@@ -81,12 +82,13 @@ with col_2:
     ax.set_ylabel("y (target)")
     ax.grid()
     ax.scatter(X, y, c="green", label="Sampel")
-    ax.plot(X, y_pred, c="gold", label="Prediksi LinReg Model")
+    ax.plot(X, y_pred, c="gold", label="Prediksi Model")
     ax.legend()
     st.pyplot(fig)
 
 st.markdown(
-    body="<h4>Kode</h4>",
+    body="""<h4>Kode</h4>
+    <p>Implementasi regresi linier menggunakan pustaka <a href='https://scikit-learn.org/stable/index.html' target='_blank'>Scikit-Learn</a>. Modul yang digunakan adalah <a href='https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression' target='_blank'>LinearRegression()</a></p>""",
     unsafe_allow_html=True
 )
 
@@ -99,12 +101,12 @@ from sklearn.datasets import make_regression
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error
 
-# step 2: load dummy data, X (feature) and y (target)
+# step 2: create dummy data, X (feature) and y (target)
 X, y = make_regression(n_samples=20,
-                    n_features=1,
-                    n_targets=1,
-                    noise=10,
-                    random_state=42)
+                       n_features=1,
+                       n_targets=1,
+                       noise=10,
+                       random_state=42)
 
 # step 3: training
 model = LinearRegression().fit(X, y)
@@ -123,7 +125,7 @@ plt.xlabel("X (fitur)")
 plt.ylabel("y (target)")
 plt.grid()
 plt.scatter(X, y, c="green", label="Samples")
-plt.plot(X, y_pred, c="gold", label="Prediksi LinReg Model")
+plt.plot(X, y_pred, c="gold", label="Prediksi Model")
 plt.legend()
 plt.show()
 
