@@ -32,7 +32,7 @@ st.markdown(
 st.latex(
     body=r'''
         \begin{align*}
-            y &= wx + b,\\\\
+            y &= wx + b\\\\
             \text{dimana, }y &= \text{target (prediksi),}\\
             w &= \text{bobot,}\\
             x &= \text{fitur,}\\
