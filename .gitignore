@@ -1,2 +1,6 @@
-.env/
+venv/
 notebooks/
+pages/Regresi_Polinomial.py
+pages/Exponential_Smoothing_Forecaster.py
+settings.json
+environment.yml

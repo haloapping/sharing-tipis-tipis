@@ -48,7 +48,7 @@ with col_1:
     n_samples = st.text_input(
         label="Jumlah sampel",
         value="20",
-        help="Berapa jumlah sampel yang diinginkan."
+        help="Ukuran sampel yang diinginkan."
     )
     noise = st.text_input(
         label="Noise",
