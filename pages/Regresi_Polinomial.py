@@ -87,8 +87,9 @@ with col_2:
     r_square_score = r2_score(y, y_pred)
     mae = mean_absolute_error(y, y_pred)
     fig, ax = plt.subplots(figsize=(5, 5))
-    ax.set_title(
-        f"$R^2$: {r_square_score:.3f} | Mean Absolute Error: {mae:.3f}", size=13)
+    
+    if show_model:
+        ax.set_title(f"$R^2$: {r_square_score:.3f} | Mean Absolute Error: {mae:.3f}", size=13)
     ax.set_xlabel("X (fitur)")
     ax.set_ylabel("y (target)")
     ax.scatter(X, y, c="green", label="Sampel")

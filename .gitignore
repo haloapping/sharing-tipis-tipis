@@ -3,3 +3,4 @@ notebooks/
 pages/Exponential_Smoothing_Forecaster.py
 settings.json
 environment.yml
+.vscode

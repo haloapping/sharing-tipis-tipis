@@ -60,6 +60,7 @@ with col_1:
         value="42",
         help="Menentukan pembuatan nomor acak untuk pembuatan kumpulan data."
     )
+    show_model = st.checkbox("Tampilkan model regresi")
 
 with col_2:
     X, y = make_regression(n_samples=int(n_samples),
@@ -82,7 +83,9 @@ with col_2:
     ax.set_ylabel("y (target)")
     ax.grid()
     ax.scatter(X, y, c="green", label="Sampel")
-    ax.plot(X, y_pred, c="gold", label="Prediksi Model")
+    
+    if show_model:
+        ax.plot(X, y_pred, c="gold", label="Prediksi Model")
     ax.legend()
     st.pyplot(fig)
 
