@@ -70,7 +70,7 @@ with col_1:
         help="Ukuran derajat polinomial."
     )
     
-    show_model = st.checkbox(label="Tampilkan Model Polinomial")
+    show_model = st.checkbox(label="Tampilkan decision function")
 
 with col_2:
     st.markdown("<h4>Visualisasi Regresi Polinomial</h4>",
@@ -162,7 +162,6 @@ plt.show()
 st.markdown(
     body="""<h4>Referensi</h4>
     <ol>
-        <li><a href='https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html'>Scikit-Learn: Polynomial Features API</a></li>
         <li><a href='https://scikit-learn.org/stable/auto_examples/linear_model/plot_polynomial_interpolation.html#sphx-glr-auto-examples-linear-model-plot-polynomial-interpolation-py'>Scikit-Learn: Plot Polynomial Interpolation</a></li>
     </ol>""",
     unsafe_allow_html=True

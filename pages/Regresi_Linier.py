@@ -60,7 +60,7 @@ with col_1:
         value="42",
         help="Menentukan pembuatan nomor acak untuk pembuatan kumpulan data."
     )
-    show_model = st.checkbox("Tampilkan model regresi")
+    show_model = st.checkbox("Tampilkan decision function")
 
 with col_2:
     X, y = make_regression(n_samples=int(n_samples),
@@ -77,8 +77,9 @@ with col_2:
         body="<h4 style='text-align: center'>Visualisasi Regresi Linier</h4>",
         unsafe_allow_html=True)
     fig, ax = plt.subplots()
-    ax.set_title(
-        f"$R^2$: {r2_score:.3f} | Mean Absolute Error: {mae:.3f}", size=13)
+    
+    if show_model:
+        ax.set_title(f"$R^2$: {r2_score:.3f} | Mean Absolute Error: {mae:.3f}", size=13)
     ax.set_xlabel("X (fitur)")
     ax.set_ylabel("y (target)")
     ax.grid()
